@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="keywords" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Dashboard Home Page</title>
+
+    <!-- Favicons -->
+    <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+      crossorigin=""
+    />
+    <script
+      src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+      integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+      crossorigin=""
+    ></script>
+    <link rel="stylesheet" href="assets/css/w3.css" />
+
+    <!-- Vendor CSS Files -->
+    <link
+      href="assets/vendor/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet" />
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" />
+    <link href="assets/vendor/venobox/venobox.css" rel="stylesheet" />
+
+    <!-- Template Main CSS File -->
+    <link href="assets/css/style.css" rel="stylesheet" />
+    <!--     Fonts and icons     -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css"
+    />
+    <!-- CSS Files -->
+    <link href="assets/css/material-dashboard.css?v=2.1.2" rel="stylesheet" />
+  </head>
+  <body
+    style="
+      background-color: #fdf6e3;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+    "
+  >
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <!-- ======= Mobile nav toggle button ======= -->
+    <button type="button" class="mobile-nav-toggle d-xl-none">
+      <i class="icofont-navigation-menu"></i>
+    </button>
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="d-flex flex-column justify-content-center">
+      <nav class="nav-menu">
+        <ul>
+          <li class="active">
+            <a href="#"
+              ><i
+                class="iconify"
+                data-icon="flat-color-icons:home"
+                data-width="2.5em"
+                data-height="2.5em"
+                data-inline="false"
+              ></i
+              ><span>Home</span></a
+            >
+          </li>
+          <li>
+            <a href="#bar-chart"
+              ><i
+                class="iconify"
+                data-icon="emojione-bar-chart"
+                data-width="2.5em"
+                data-height="2.5em"
+                data-inline="false"
+              ></i
+              ><span>Statistics</span></a
+            >
+          </li>
+          <li>
+            <a href="#mapid"
+              ><i
+                class="iconify"
+                data-icon="emojione-world-map"
+                data-width="2.5em"
+                data-height="2.5em"
+                data-inline="false"
+              ></i
+              ><span>Delivery Map</span></a
+            >
+          </li>
+          <li>
+            <a href="#data-table"
+              ><i
+                class="iconify"
+                data-icon="vaadin-table"
+                data-width="2.5em"
+                data-height="2.5em"
+                data-inline="false"
+              ></i
+              ><span>Data</span></a
+            >
+          </li>
+        </ul>
+      </nav>
+      <!-- .nav-menu -->
+    </header>
+    <div class="main-panel">
+      <div class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                <div class="card-header card-header-dark card-header-icon">
+                  <div class="card-icon">
+                    <span
+                      class="iconify"
+                      data-icon="twemoji:delivery-truck"
+                      data-inline="false"
+                      data-width="3.5em"
+                      data-height="3.5em"
+                    ></span>
+                  </div>
+                  <p class="card-category">Items Shipped</p>
+                  <h3 class="card-title" id="items-shipped">
+                    1/9
+                    <small>Items</small>
+                  </h3>
+                </div>
+                <div class="card-footer">
+                  <div class="stats">
+                    <i class="material-icons text-danger">warning</i>
+                    <a href="javascript:;" id="packages-left">8 More</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                <div class="card-header card-header-success card-header-icon">
+                  <div class="card-icon">
+                    <span
+                      class="iconify"
+                      data-icon="emojione-v1:department-store"
+                      data-inline="false"
+                      data-width="3.5em"
+                      data-height="3.5em"
+                    ></span>
+                  </div>
+                  <p class="card-category">In Stock</p>
+                  <h3 class="card-title" id="in-stock">11/12</h3>
+                </div>
+                <div class="card-footer">
+                  <div class="stats">
+                    <i class="material-icons">date_range</i> Just Updated
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                <div class="card-header card-header-warning card-header-icon">
+                  <div class="card-icon">
+                    <span
+                      class="iconify"
+                      data-icon="emojione-money-bag"
+                      data-inline="false"
+                      data-width="3.5em"
+                      data-height="3.5em"
+                    ></span>
+                  </div>
+                  <p class="card-category">Revenue Generated</p>
+                  <h3 class="card-title" id="money-earned">$ 75K</h3>
+                </div>
+                <div class="card-footer">
+                  <div class="stats">
+                    <i class="material-icons">local_offer</i> In Rupees
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                <div class="card-header card-header-info card-header-icon">
+                  <div class="card-icon">
+                    <span
+                      class="iconify"
+                      data-icon="fa-solid:shipping-fast"
+                      data-inline="false"
+                      data-width="3.5em"
+                      data-height="3.5em"
+                    ></span>
+                  </div>
+                  <p class="card-category">In Transit</p>
+                  <h3 class="card-title" id="in-transit">2</h3>
+                </div>
+                <div class="card-footer">
+                  <div class="stats">
+                    <i class="material-icons">update</i> Just Updated
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card shadow" id="bar-chart">
+          <canvas id="myChart" height="300" width="700"></canvas>
+        </div>
+        <br />
+        <br />
+        <div class="row">
+          <!--Grid column-->
+          <div class="col-lg-5" style="top: 10px">
+            <div
+              class="card shadow w3-container w3-center w3-animate-opacity"
+              style="transform: translateZ(0)"
+              id="map-card-info"
+            >
+              <h3>Click a Marker to see Info</h3>
+              <br /><br /><br /><br /><br /><br />
+            </div>
+          </div>
+          <div class="col-lg-7">
+            <div
+              class="shadow rounded container-fluid map-container-6 z-depth-1-half"
+              id="mapid"
+              style="height: 600px; width: 800px; border: 0"
+              frameborder="0"
+              allowfullscreen
+            ></div>
+          </div>
+        </div>
+        <div class="container-fluid" width="400" height="800">
+          <br /><br /><br /><br /><br />
+          <table
+            class="table table-light table-hover table-responsive table-striped"
+            style="width: 100%; height: 100%; margin-bottom: 0; display: table"
+            id="data-table"
+          ></table>
+        </div>
+      </div>
+    </div>
+    <style>
+      td,
+      th,
+      tr {
+        text-align: center;
+      }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+      let url =
+        "https://spreadsheets.google.com/feeds/list/1VU8MclQ_iCaXm3q4pAZfXd795hsrmwtKKA5BMeKtS0c/1/public/full?alt=json";
+
+      let out;
+      let previous_length = 0;
+      let cities = "",
+        ordersshipped = "",
+        ordersdispatched = "";
+
+      $(document).ready(function () {
+        emptyMap();
+        refreshJson();
+        // Fetch every 10 second
+        setInterval(refreshJson, 5000);
+      });
+
+      function refreshJson() {
+        $.getJSON(url, function (out) {
+          refreshChart(out);
+          refreshCards(out);
+          refreshDataTable(out);
+          refreshMap(out);
+          previous_length = out.feed.entry.length;
+        });
+      }
+      function refreshCards(out) {
+        let total_cost = 0;
+        let in_transit = 0;
+        let shipped = 0;
+        let to_ship = 9;
+        let in_stock = 12;
+        for (var i in [...Array(out.feed.entry.length).keys()]) {
+          if (out.feed.entry[i].gsx$orderid.$t != "") {
+            total_cost += parseInt(out.feed.entry[i].gsx$cost.$t);
+            if (
+              out.feed.entry[i].gsx$orderdispatched.$t.toLowerCase() == "yes" &&
+              out.feed.entry[i].gsx$ordershipped.$t.toLowerCase() == "no"
+            ) {
+              in_transit += 1;
+            }
+            if (out.feed.entry[i].gsx$ordershipped.$t.toLowerCase() == "yes") {
+              shipped += 1;
+            }
+          }
+        }
+
+        document.getElementById("items-shipped").innerHTML = shipped;
+        document.getElementById("packages-left").innerHTML =
+          String(to_ship - shipped) + " More";
+        document.getElementById("money-earned").innerHTML = total_cost;
+        document.getElementById("in-stock").innerHTML = in_stock;
+        -shipped;
+        document.getElementById("in-transit").innerHTML = in_transit;
+      }
+      let color_map = {
+        Red: {
+          bg_color: "rgba(255, 99, 132, 0.2)",
+          border_color: "rgba(255, 99, 132, 1)",
+        },
+        Yellow: {
+          bg_color: "rgba(255, 206, 86, 0.2)",
+          border_color: "rgba(255, 206, 86, 1)",
+        },
+        Green: {
+          bg_color: "rgba(25, 247, 5, 0.2)",
+          border_color: "rgba(5, 115, 17, 1)",
+        },
+      };
+      function refreshChart(out) {
+        let labels = [];
+        let bg_colors = [];
+        let border_colors = [];
+        let time_taken = [];
+        for (var i in [...Array(out.feed.entry.length).keys()]) {
+          if (out.feed.entry[i].gsx$orderid.$t != "") {
+            if (out.feed.entry[i].gsx$priority.$t.toLowerCase() == "hp") {
+              bg_colors.push(color_map["Red"]["bg_color"]);
+              border_colors.push(color_map["Red"]["border_color"]);
+            } else if (
+              out.feed.entry[i].gsx$priority.$t.toLowerCase() == "mp"
+            ) {
+              bg_colors.push(color_map["Yellow"]["bg_color"]);
+              border_colors.push(color_map["Yellow"]["border_color"]);
+            }
+            if (out.feed.entry[i].gsx$priority.$t.toLowerCase() == "lp") {
+              bg_colors.push(color_map["Green"]["bg_color"]);
+              border_colors.push(color_map["Green"]["border_color"]);
+            }
+            labels.push(out.feed.entry[i].gsx$orderid.$t);
+            time = out.feed.entry[i].gsx$timetaken.$t.split(":");
+            time =
+              parseInt(time[0]) * 3600 +
+              parseInt(time[1]) * 60 +
+              parseInt(time[2]);
+            time_taken.push(time);
+          }
+        }
+        var ctx = document.getElementById("myChart").getContext("2d");
+        var myChart = new Chart(ctx, {
+          type: "bar",
+          data: {
+            labels: labels,
+            datasets: [
+              {
+                label: "Time Taken",
+                data: time_taken,
+                backgroundColor: bg_colors,
+                borderColor: border_colors,
+                borderWidth: 2,
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            animation: true,
+            scales: {
+              yAxes: [
+                {
+                  ticks: {
+                    beginAtZero: true,
+                  },
+                },
+              ],
+              xAxes: [
+                {
+                  barThickness: 75,
+                  maxBarThickness: 75,
+                },
+              ],
+            },
+          },
+        });
+      }
+      function refreshDataTable(out) {
+        let in_stock = 12;
+        var rows = 0;
+        let number_of_cols = 10;
+        var trHTML = `<thead class="thead-dark"><tr><th>Order #ID</th><th>Item</th><th>Priority</th>
+            <th>City</th><th>Dispatched</th><th>Shipped</th><th>Order Date and Time</th><th>Dispatch Date and Time</th>
+            <th>Shipped Date and Time</th><th>Time Taken</th></tr></thead>`;
+        var table_card =
+          '<thead class="thead-light"><th>City</th><th>Latitude</th><th>Longitude</th></thead>';
+        for (var i in [...Array(out.feed.entry.length).keys()]) {
+          if (out.feed.entry[i].gsx$orderid.$t != "") {
+            if (out.feed.entry[i].gsx$timetaken.$t === "#N/A") {
+              out.feed.entry[i].gsx$timetaken.$t = "";
+            }
+            trHTML +=
+              "<tr><td>" +
+              out.feed.entry[i].gsx$orderid.$t +
+              "</td>" +
+              "<td>" +
+              out.feed.entry[i].gsx$item.$t +
+              "</td>" +
+              "<td>" +
+              out.feed.entry[i].gsx$priority.$t +
+              "</td>" +
+              "<td>" +
+              out.feed.entry[i].gsx$city.$t +
+              "</td>" +
+              "<td>" +
+              out.feed.entry[i].gsx$orderdispatched.$t +
+              "</td>" +
+              "<td>" +
+              out.feed.entry[i].gsx$ordershipped.$t +
+              "</td>" +
+              "<td>" +
+              out.feed.entry[i].gsx$orderdateandtime.$t +
+              "</td>" +
+              "<td>" +
+              out.feed.entry[i].gsx$dispatchdateandtime.$t +
+              "</td>" +
+              "<td>" +
+              out.feed.entry[i].gsx$shippeddateandtime.$t +
+              "</td>" +
+              "<td>" +
+              out.feed.entry[i].gsx$timetaken.$t +
+              "</td>" +
+              "</tr>";
+            rows += 1;
+
+            table_card +=
+              "<tr><td>" +
+              out.feed.entry[i].gsx$city.$t +
+              "</td>" +
+              "<td>" +
+              out.feed.entry[i].gsx$latitude.$t +
+              "</td>" +
+              "<td>" +
+              out.feed.entry[i].gsx$longitude.$t +
+              "</td></tr>";
+          }
+        }
+        for (rows; rows < in_stock; rows++) {
+          trHTML += "<tr>" + "<td></td>".repeat(number_of_cols) + "</tr>";
+        }
+        $("#data-table").html(trHTML);
+        $("#table-map-card").html(table_card);
+        var trHTML = "";
+        var table_card = "";
+      }
+      function refreshMap(out) {
+        var updatedMap = false;
+        let cities1 = [],
+          ordersdispatched1 = [],
+          ordersshipped1 = [];
+        for (var i in [...Array(out.feed.entry.length).keys()]) {
+          cities1.push(out.feed.entry[i].gsx$city.$t);
+          ordersdispatched1.push(out.feed.entry[i].gsx$orderdispatched.$t);
+          ordersshipped1.push(out.feed.entry[i].gsx$ordershipped.$t);
+        }
+        if (
+          ordersdispatched1.toString() === ordersdispatched &&
+          ordersshipped1.toString() === ordersshipped &&
+          cities1.toString() === cities
+        ) {
+          return true;
+        }
+        cities = cities1.toString();
+        ordersdispatched = ordersdispatched1.toString();
+        ordersshipped = ordersshipped1.toString();
+
+        var container = L.DomUtil.get("mapid");
+
+        if (container != null) {
+          container._leaflet_id = null;
+        }
+        var map = L.map("mapid").setView([20.5937, 78.9629], 4);
+        var jsonDataObject = [];
+        let icon_color = "";
+
+        for (var i = 0; i < out.feed.entry.length; ++i) {
+          if (out.feed.entry[i].gsx$latitude.$t !== "") {
+            updatedMap = true;
+            var json_data = {
+              City: out.feed.entry[i].gsx$city.$t,
+              OrderID: out.feed.entry[i].gsx$orderid.$t,
+              Item: out.feed.entry[i].gsx$item.$t,
+              Latitude: parseFloat(out.feed.entry[i].gsx$latitude.$t),
+              Longitude: parseFloat(out.feed.entry[i].gsx$longitude.$t),
+              OrderDispatched: out.feed.entry[i].gsx$orderdispatched.$t,
+              OrderShipped: out.feed.entry[i].gsx$ordershipped.$t,
+            };
+            if (
+              json_data.OrderDispatched === "NO" &&
+              json_data.OrderShipped === "NO"
+            ) {
+              icon_color = "red";
+            } else if (
+              json_data.OrderDispatched === "YES" &&
+              json_data.OrderShipped === "NO"
+            ) {
+              icon_color = "yellow";
+            } else {
+              icon_color = "green";
+            }
+            var newIcon = new L.Icon({
+              iconUrl:
+                "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-" +
+                icon_color +
+                ".png",
+              shadowUrl:
+                "https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png",
+              iconSize: [25, 41],
+              iconAnchor: [12, 41],
+              popupAnchor: [1, -34],
+              shadowSize: [41, 41],
+            });
+            var marker = L.marker(
+              L.latLng(
+                parseFloat(json_data.Latitude),
+                parseFloat(json_data.Longitude)
+              ),
+              { icon: newIcon }
+            ).addTo(map);
+            marker.bindPopup(json_data.City, {
+              autoClose: false,
+            });
+            map.addLayer(marker);
+            marker.on("click", onClick_Marker);
+            // Attach the corresponding JSON data to your marker:
+            marker.myJsonData = json_data;
+
+            function onClick_Marker(e) {
+              var marker = e.target;
+              popup = L.popup()
+                .setLatLng(marker.getLatLng())
+                .setContent(
+                  "Order ID: " +
+                    marker.myJsonData.OrderID +
+                    " || Item: " +
+                    marker.myJsonData.Item
+                )
+                .openOn(map);
+              content =
+                '<h3 class="w3-container w3-center w3-animate-opacity" style="font-weight:bold;">' +
+                "Order ID: " +
+                marker.myJsonData.OrderID +
+                "<br><br>Item: " +
+                marker.myJsonData.Item +
+                "<br><br>Dispatched: " +
+                marker.myJsonData.OrderDispatched +
+                "<br><br>Shipped: " +
+                marker.myJsonData.OrderShipped +
+                "</h3>";
+              if (marker.myJsonData.Item === "Medicine") {
+                content += `<i
+                class="iconify"
+                data-icon="openmoji:first-aid-bag"
+                data-width="5.5em"
+                data-height="5.5em"
+                data-inline="false"
+                style="left: 50%;display:block;margin-left:auto;margin-right:auto;"
+              ></i
+              >`;
+                document.getElementById("map-card-info").style.backgroundColor =
+                  "rgba(255, 99, 132, 0.2)";
+              } else if (marker.myJsonData.Item === "Food") {
+                content += `<i
+                class="iconify"
+                data-icon="emojione:pot-of-food"
+                data-width="5.5em"
+                data-height="5.5em"
+                data-inline="false"
+                style="left: 50%;display:block;margin-left:auto;margin-right:auto;"
+              ></i
+              >`;
+                document.getElementById("map-card-info").style.backgroundColor =
+                  "rgba(255, 206, 86, 0.2)";
+              } else if (marker.myJsonData.Item === "Clothes") {
+                content += `<i
+                class="iconify"
+                data-icon="noto:t-shirt"
+                data-width="5.5em"
+                data-height="5.5em"
+                data-inline="false"
+                style="left: 50%;display:block;margin-left:auto;margin-right:auto;"
+              ></i
+              >`;
+                document.getElementById("map-card-info").style.backgroundColor =
+                  "rgba(25, 247, 5, 0.2)";
+              }
+              $("#map-card-info").html(content);
+            }
+
+            L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+              attribution:
+                '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+            }).addTo(map);
+          }
+        }
+        if (!updatedMap) {
+          emptyMap();
+        }
+      }
+      function emptyMap() {
+        var container = L.DomUtil.get("mapid");
+
+        if (container != null) {
+          container._leaflet_id = null;
+        }
+        var map = L.map("mapid").setView([20.5937, 78.9629], 4);
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+          attribution:
+            '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+        }).addTo(map);
+      }
+    </script>
+  </body>
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/jquery/jquery.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+</html>
